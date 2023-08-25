@@ -1,5 +1,6 @@
 from format import read_csv
 from os import system
+from os.path import isfile
 
 def clean(filename):
     table = read_csv("dataset/"+filename)
@@ -38,6 +39,8 @@ def download():
     system("rmdir NWP_datasets")
 
 def main():
+    if not isfile('dataset.zip'):
+        download()
     files = [
             "cfh_4km.csv",
             "cfl_4km.csv",
@@ -53,4 +56,4 @@ def main():
 
 
 if __name__ == "__main__":
-    download()
+    main()
