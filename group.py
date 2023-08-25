@@ -1,4 +1,5 @@
 from format import read_csv
+from os import system
 
 def clean(filename):
     table = read_csv("dataset/"+filename)
@@ -29,6 +30,13 @@ def clean(filename):
             f.write(",".join([str(elem) for elem in i]))
             f.write('\n')
 
+def download():
+    file = "https://rdm.inesctec.pt/dataset/d5700c25-c3f2-4f51-922a-87b450df1ebd/resource/b29a9f98-acd5-4f43-afb6-8ce4e314e9a1/download/nwpdatasets.zip"
+    system("curl {} > dataset.zip".format(file))
+    system("unzip dataset.zip")
+    system("mv NWP_datasets/* dataset/")
+    system("rmdir NWP_datasets")
+
 def main():
     files = [
             "cfh_4km.csv",
@@ -45,4 +53,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    download()
