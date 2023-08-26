@@ -10,7 +10,8 @@ def consistent(arr):
     for i,val in enumerate(arr):
         if not len(val) == m:
             print("Not consistent at row {} with value {} instead of {}".format(i+1,len(val),m))
-            break
+            exit(1)
+
     else:
         print("Consistent with {}X{}".format(n,m));
 
