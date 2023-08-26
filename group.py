@@ -25,6 +25,7 @@ def clean(filename):
             prev = row[0]
             temp.clear()
     print(len(final))
+    table[0].remove('timerequests')
     with open("fit_data/"+filename, "w") as f:
         f.write(",".join(table[0]))
         for i in final:
